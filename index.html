@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aceitas?</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #ffc8dd;
+            font-family: Arial, sans-serif;
+            color: #590d22;
+            overflow: hidden;
+        }
+
+        .caixa {
+            text-align: center;
+            padding: 25px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: clamp(28px, 6vw, 42px);
+        }
+
+        .coracoes {
+            font-size: 42px;
+        }
+
+        .botoes {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin-top: 35px;
+            min-height: 65px;
+        }
+
+        button {
+            background: #ffb3c1;
+            color: #590d22;
+            border: 2px solid #ff8fab;
+            border-radius: 12px;
+            padding: 13px 28px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        #nao {
+            position: relative;
+        }
+
+        #sim:hover {
+            background: #ff8fab;
+        }
+
+        #mensagem {
+            font-size: 21px;
+            font-weight: bold;
+            margin-top: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="caixa">
+        <div class="coracoes">💗 💕 💗</div>
+
+        <h1>Você quer casar comigo?</h1>
+
+        <p>Prometo tentar te fazer feliz todos os dias! 🥹</p>
+
+        <div class="botoes">
+            <button id="sim" onclick="aceitar()">Sim 💖</button>
+            <button id="nao">Não 😭</button>
+        </div>
+
+        <p id="mensagem"></p>
+    </main>
+
+    <script>
+        const botaoNao = document.getElementById("nao");
+
+        function fugir() {
+            botaoNao.style.position = "fixed";
+
+            const maxX = window.innerWidth - botaoNao.offsetWidth - 10;
+            const maxY = window.innerHeight - botaoNao.offsetHeight - 10;
+
+            const x = Math.max(10, Math.random() * maxX);
+            const y = Math.max(10, Math.random() * maxY);
+
+            botaoNao.style.left = x + "px";
+            botaoNao.style.top = y + "px";
+        }
+
+        botaoNao.addEventListener("mouseover", fugir);
+        botaoNao.addEventListener("touchstart", function(event) {
+            event.preventDefault();
+            fugir();
+        });
+
+        function aceitar() {
+            document.getElementById("mensagem").textContent =
+                "EU TE AMO! 💗 Agora somos casados! 🥹💕";
+
+            document.querySelector(".coracoes").textContent = "💖💘💖";
+        }
+    </script>
+</body>
+</html>
